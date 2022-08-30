@@ -5,7 +5,8 @@ data informada (sábado).
 PROGRAMA: leitura_jornais.dart - v.0.1
 PROGRAMADOR: Edilson Vilarinho
 DATA: 29/08/2022
-MANUTENÇÃO: 
+MANUTENÇÃO: 30/08/2022
+  Incluir: import '.../funcoes/formataData.dart'
 ----------------------------------
 
 "Vamos ser referência juntos no Flutter, no Brasil e no Mundo"
@@ -14,6 +15,7 @@ MANUTENÇÃO:
 */
 
 import 'dart:io';
+import '/media/edilson/Dados1/_Edilson/Projetos/Estudo_Dart/Edilson_Vilarinho/funcoes/formataData.dart';
 
 void main(List<String> arguments) {
   print('Digite a data do sábado (AAAA-MM-DD):');
@@ -76,15 +78,4 @@ void listaJornal(int diasSemana, final dataInicial, String titulo) {
         }
     }
   }
-}
-
-// Função para formatar data em DD/MM/AAAA
-String formataData(data) {
-  assert(data != null);
-  String dataFormatada = data.substring(8) +
-      "/" +
-      data.substring(5, 7) +
-      "/" +
-      data.substring(0, 4);
-  return dataFormatada;
 }
