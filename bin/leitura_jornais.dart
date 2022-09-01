@@ -5,8 +5,9 @@ data informada (sábado).
 PROGRAMA: leitura_jornais.dart - v.0.1
 PROGRAMADOR: Edilson Vilarinho
 DATA: 29/08/2022
-MANUTENÇÃO: 30/08/2022
-  Incluir: import '.../funcoes/formataData.dart'
+MANUTENÇÃO: 01/09/2022
+  Incluir: releasePrograma
+  Incluir: validar data para sábado
 ----------------------------------
 
 "Vamos ser referência juntos no Flutter, no Brasil e no Mundo"
@@ -17,18 +18,27 @@ MANUTENÇÃO: 30/08/2022
 import 'dart:io';
 import '/media/edilson/Dados1/_Edilson/Projetos/Estudo_Dart/Edilson_Vilarinho/funcoes/formataData.dart';
 
+// *** atualizar release do programa
+String releasePrograma = "*leitura_jornais.dart v.0.1.20220901";
+
 void main(List<String> arguments) {
   print('Digite a data do sábado (AAAA-MM-DD):');
   String dataInicialStr = stdin.readLineSync()!;
 
   final dataInicial = DateTime.parse(dataInicialStr);
-  int diasSemana = 7;
 
-  print('+++ LEITURA DD/MM +++');
-  listaJornal(diasSemana, dataInicial, "JC");
-  listaJornal(diasSemana, dataInicial, "ESTADÃO");
-  listaJornal(diasSemana, dataInicial, "FOLHA DE SP");
-  listaJornal(diasSemana, dataInicial, "O GLOBO");
+  if (dataInicial.weekday == 6) {
+    int diasSemana = 7;
+    print('+++ LEITURA DD/MM +++');
+    listaJornal(diasSemana, dataInicial, "JC");
+    listaJornal(diasSemana, dataInicial, "ESTADÃO");
+    listaJornal(diasSemana, dataInicial, "FOLHA DE SP");
+    listaJornal(diasSemana, dataInicial, "O GLOBO");
+    print(" ");
+    print(releasePrograma);
+  } else {
+    print("[ERRO] Favor informar uma data válida para o sábado");
+  }
 }
 
 void listaJornal(int diasSemana, final dataInicial, String titulo) {
