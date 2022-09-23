@@ -5,9 +5,8 @@ data informada (sábado).
 PROGRAMA: leitura_jornais.dart - v.0.1
 PROGRAMADOR: Edilson Vilarinho
 DATA: 29/08/2022
-MANUTENÇÃO: 10/09/2022
-  Incluir: www.startdevstudio.com
-  Incluir: mes2digitos = mesFormatado.substring(3, 5);
+MANUTENÇÃO: 23/09/2022  
+  Incluir: dia2digitos = diaFormatado.substring(0, 2);
 ----------------------------------
 
 "Vamos ser referência juntos no Flutter, no Brasil e no Mundo"
@@ -19,7 +18,7 @@ import 'dart:io';
 import '/media/edilson/Dados1/_Edilson/Projetos/Estudo_Dart/Edilson_Vilarinho/funcoes/formataData.dart';
 
 // *** atualizar release do programa
-String releasePrograma = "*leitura_jornais.dart v.0.1.20220910";
+String releasePrograma = "*leitura_jornais.dart v.0.1.20220923";
 
 void main(List<String> arguments) {
   print('Digite a data do sábado (AAAA-MM-DD):');
@@ -29,11 +28,12 @@ void main(List<String> arguments) {
   String mesStr = dataInicial.toIso8601String();
   String mesSubStr = mesStr.substring(0, 10);
   String mesFormatado = formataData(mesSubStr);
+  String dia2digitos = mesFormatado.substring(0, 2);
   String mes2digitos = mesFormatado.substring(3, 5);
 
   if (dataInicial.weekday == 6) {
     int diasSemana = 7;
-    print('+++ LEITURA DD/$mes2digitos +++');
+    print('+++ LEITURA $dia2digitos/$mes2digitos +++');
     listaJornal(diasSemana, dataInicial, "JC");
     listaJornal(diasSemana, dataInicial, "ESTADÃO");
     listaJornal(diasSemana, dataInicial, "FOLHA DE SP");
